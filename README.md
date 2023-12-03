@@ -14,7 +14,7 @@
 ```bash
 git clone https://github.com/Stepashka20/vuln-app
 cd vuln-app
-go build main.go -o vuln-app
+go build -o vuln-app
 ```
 
 Перед запуском скопируйте и заполните `.env`:

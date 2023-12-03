@@ -12,11 +12,13 @@ type MiscController struct{}
 func (m *MiscController) Ping(c *gin.Context) {
 	website := c.PostForm("website")
 
-	userInput := "ping -n 4 " + website
+	var userInput string
 	var cmd *exec.Cmd
 	if runtime.GOOS == "windows" {
+		userInput = "ping -n 4 " + website
 		cmd = exec.Command("cmd", "/C", userInput)
 	} else {
+		userInput = "ping -c 4 " + website
 		cmd = exec.Command("sh", "-c", userInput)
 	}
 	output, err := cmd.CombinedOutput()
