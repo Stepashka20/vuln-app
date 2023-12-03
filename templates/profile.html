@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Профиль пользователя</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body data-bs-theme="dark">
+<div class="container mt-5 m-auto">
+    <h1 class="text-center mb-5">Профиль пользователя</h1>
+    <div class="card m-auto" style="width: 24rem;">
+        <img src="https://i.ibb.co/zVphgwc/image.png" class="card-img-top" alt="Default Avatar">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{.username }}</h5>
+
+            {{if .filename}}
+                <a href="/files?name={{.filename}}" class="btn btn-success w-100 mb-2" download rel="noopener noreferrer" target="_blank">
+                    Скачать любимый файл
+                </a>
+            {{end}}
+            <a href="/logout" class="btn btn-danger w-100 mb-2">Выйти</a>
+            <a href="/delete?user={{.username }}" class="btn btn-light w-100">Удалить аккаунт</a>
+        </div>
+    </div>
+    <form action="/upload" class="mt-4" method="post" enctype="multipart/form-data">
+        <div class="card m-auto" style="width: 24rem;">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Загрузите свой любимый файл и он сохранится навсегда</label>
+                    <input class="form-control" type="file" name="file" id="formFile">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Загрузить</button>
+            </div>
+        </div>
+    </form>
+    <div class="card m-auto mt-4" style="width: 24rem;" >
+
+        <div class="card-body">
+            <div>Другие проги:</div>
+            <a href="/ping" class="btn btn-warning w-100 mt-2">Пинговалка</a>
+        </div>
+    </div>
+
+
+
+</div>
+</body>
+</html>
